@@ -21,11 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
 Route::get('/level', [LevelController::class, 'index']);
-
 Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/user', [UserController::class, 'index']);
 
-Route::get('/user/{id}/name/{name}', [UserController::class, 'user']);
+// Route::get('/user/{id}/name/{name}', [UserController::class, 'user']);
 
 Route::prefix('category')->group(function () {
     Route::get('/food-beverage', [CategoryController::class, 'foodBeverage']);
