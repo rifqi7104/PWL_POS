@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
@@ -21,6 +22,8 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/level', [LevelController::class, 'index']);
+
+Route::get('/kategori', [KategoriController::class, 'index']);
 
 Route::get('/user/{id}/name/{name}', [UserController::class, 'user']);
 
