@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KategoriModel;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -147,15 +148,22 @@ class KategoriController extends Controller
     public function delete_ajax(Request $request, $id)
     {
         if ($request->ajax() || $request->wantsJson()) {
-            $kategori = KategoriModel::find($id);
+            try {
+                $kategori = KategoriModel::find($id);
 
-            if ($kategori) {
-                $kategori->delete();
-                return response()->json([
-                    'status' => true,
-                    'message' => 'Data berhasil dihapus'
-                ]);
-            } else {
+                if ($kategori) {
+                    $kategori->delete();
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'Data berhasil dihapus'
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'Data tidak ditemukan'
+                    ]);
+                }
+            } catch (QueryException $e) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Data tidak ditemukan'

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\LevelModel;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -160,7 +161,7 @@ class LevelController extends Controller
             'status' => false,
             'message' => 'Request Bukan Ajax'
         ]);
-        
+
         redirect('/');
     }
 
@@ -176,15 +177,17 @@ class LevelController extends Controller
     public function delete_ajax(Request $request, $id)
     {
         if ($request->ajax() || $request->wantsJson()) {
-            $level = LevelModel::find($id);
-
-            if ($level) {
-                $level->delete();
-                return response()->json([
-                    'status' => true,
-                    'message' => 'Data berhasil dihapus'
-                ]);
-            } else {
+            try {
+                $level = LevelModel::find($id);
+                if ($level) {
+                    $level->delete();
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'Data berhasil dihapus'
+                    ]);
+                } else {
+                }
+            } catch (QueryException $e) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Data tidak ditemukan'
