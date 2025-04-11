@@ -27,17 +27,24 @@ class AuthController extends Controller
             ]);
 
             $credentials = $request->only('username', 'password');
-            if (Auth::attempt($credentials)) {
+            try {
+                if (Auth::attempt($credentials)) {
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'Login Berhasil',
+                        'redirect' => url('/')
+                    ]);
+                }
                 return response()->json([
-                    'status' => true,
-                    'message' => 'Login Berhasil',
-                    'redirect' => url('/')
+                    'status' => false,
+                    'message' => 'Login Gagal'
+                ]);
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Terjadi Kesalahan Sistem'
                 ]);
             }
-            return response()->json([
-                'status' => false,
-                'message' => 'Login Gagal'
-            ]);
         }
         return redirect('login');
     }

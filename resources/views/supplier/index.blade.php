@@ -5,10 +5,11 @@
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
+                <button onclick="modalAction('{{ url('supplier/import') }}')" class="btn btn-info">Import Level</button>
                 <a class="btn btn-sm btn-primary mt-1" href="{{ url('supplier/create') }}">Tambah</a>
                 <button type="button" onclick="modalAction('{{ url('supplier/create_ajax') }}')"
                     class="btn btn-sm btn-success mt-1">Tambah
-                    Ajax</button>
+                    (Ajax)</button>
             </div>
         </div>
         <div class="card-body">
@@ -45,9 +46,9 @@
                 $('#myModal').modal('show');
             });
         }
-        var dataSupplier;
+        var tableSupplier;
         $(document).ready(function() {
-                dataSupplier = $('#table_supplier').DataTable({
+                tableSupplier = $('#table_supplier').DataTable({
                 serverSide: true,
                 ajax: {
                     "url": "{{ url('supplier/list') }}",

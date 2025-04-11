@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/', [LevelController::class, 'store']);
             Route::get('/create_ajax', [LevelController::class, 'create_ajax']); // Menampilkan halaman form tambah user Ajax
             Route::post('/ajax', [LevelController::class, 'store_ajax']);         // Menyimpan data user baru Ajax
+            Route::get('/import', [LevelController::class, 'import']); //ajax form upload excel
+            Route::post('/import_ajax', [LevelController::class, 'import_ajax']); // ajax import excel
             Route::get('/{id}/edit', [LevelController::class, 'edit']);
             Route::put('/{id}', [LevelController::class, 'update']);
             Route::get('/{id}/edit_ajax', [LevelController::class, 'edit_ajax']);  // Menampilkan halaman form edit user Ajax
@@ -77,6 +79,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/', [UserController::class, 'store']);         // menyimpan data user baru
             Route::get('/create_ajax', [UserController::class, 'create_ajax']); // Menampilkan halaman form tambah user Ajax
             Route::post('/ajax', [UserController::class, 'store_ajax']);         // Menyimpan data user baru Ajax
+            Route::get('/import', [UserController::class, 'import']); //ajax form upload excel
+            Route::post('/import_ajax', [UserController::class, 'import_ajax']); // ajax import excel
             Route::get('/{id}', [UserController::class, 'show']);       // menampilkan detail user
             Route::get('/{id}/edit', [UserController::class, 'edit']);  // menampilkan halaman form edit user
             Route::put('/{id}', [UserController::class, 'update']);     // menyimpan perubahan data user
@@ -96,6 +100,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/create_ajax', [KategoriController::class, 'create_ajax']); // Menampilkan halaman form tambah user Ajax
             Route::post('/ajax', [KategoriController::class, 'store_ajax']);         // Menyimpan data user baru Ajax
             Route::post('/', [KategoriController::class, 'store']);
+            Route::get('/import', [KategoriController::class, 'import']); //ajax form upload excel
+            Route::post('/import_ajax', [KategoriController::class, 'import_ajax']); // ajax import excel
             Route::get('/{id}/edit', [KategoriController::class, 'edit']);
             Route::put('/{id}', [KategoriController::class, 'update']);
             Route::get('/{id}/edit_ajax', [KategoriController::class, 'edit_ajax']);  // Menampilkan halaman form edit user Ajax
@@ -114,6 +120,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/', [SupplierController::class, 'store']);
             Route::get('/create_ajax', [SupplierController::class, 'create_ajax']); // Menampilkan halaman form tambah user Ajax
             Route::post('/ajax', [SupplierController::class, 'store_ajax']);         // Menyimpan data user baru Ajax
+            Route::get('/import', [SupplierController::class, 'import']); //ajax form upload excel
+            Route::post('/import_ajax', [SupplierController::class, 'import_ajax']); // ajax import excel
             Route::get('/{id}', [SupplierController::class, 'show']);
             Route::get('/{id}/edit', [SupplierController::class, 'edit']);
             Route::put('/{id}', [SupplierController::class, 'update']);
