@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/ajax', [BarangController::class, 'store_ajax']);         // Menyimpan data user baru Ajax
             Route::get('/import', [BarangController::class, 'import']); //ajax form upload excel
             Route::post('/import_ajax', [BarangController::class, 'import_ajax']); // ajax import excel
+            Route::get('/export_excel', [BarangController::class, 'export_excel']); // ajax import excel
             Route::get('/{id}', [BarangController::class, 'show']);
             Route::get('/{id}/edit', [BarangController::class, 'edit']);
             Route::put('/{id}', [BarangController::class, 'update']);
