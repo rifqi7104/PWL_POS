@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/import', [LevelController::class, 'import']); //ajax form upload excel
             Route::post('/import_ajax', [LevelController::class, 'import_ajax']); // ajax import excel
             Route::get('/export_excel', [LevelController::class, 'export_excel']); // export excel
+            Route::get('/export_pdf', [LevelController::class, 'export_pdf']); // export pdf
             Route::get('/{id}/edit', [LevelController::class, 'edit']);
             Route::put('/{id}', [LevelController::class, 'update']);
             Route::get('/{id}/edit_ajax', [LevelController::class, 'edit_ajax']);  // Menampilkan halaman form edit user Ajax
@@ -85,6 +86,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/import', [UserController::class, 'import']); //ajax form upload excel
             Route::post('/import_ajax', [UserController::class, 'import_ajax']); // ajax import excel
             Route::get('/export_excel', [UserController::class, 'export_excel']); // export excel
+            Route::get('/export_pdf', [UserController::class, 'export_pdf']); // export pdf
             Route::get('/{id}', [UserController::class, 'show']);       // menampilkan detail user
             Route::get('/{id}/edit', [UserController::class, 'edit']);  // menampilkan halaman form edit user
             Route::put('/{id}', [UserController::class, 'update']);     // menyimpan perubahan data user
@@ -107,6 +109,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/import', [KategoriController::class, 'import']); //ajax form upload excel
             Route::post('/import_ajax', [KategoriController::class, 'import_ajax']); // ajax import excel
             Route::get('/export_excel', [KategoriController::class, 'export_excel']); // export excel
+            Route::get('/export_pdf', [KategoriController::class, 'export_pdf']); // export pdf
             Route::get('/{id}/edit', [KategoriController::class, 'edit']);
             Route::put('/{id}', [KategoriController::class, 'update']);
             Route::get('/{id}/edit_ajax', [KategoriController::class, 'edit_ajax']);  // Menampilkan halaman form edit user Ajax
@@ -128,6 +131,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/import', [SupplierController::class, 'import']); //ajax form upload excel
             Route::post('/import_ajax', [SupplierController::class, 'import_ajax']); // ajax import excel
             Route::get('/export_excel', [SupplierController::class, 'export_excel']); // export excel
+            Route::get('/export_pdf', [SupplierController::class, 'export_pdf']); // export pdf
             Route::get('/{id}', [SupplierController::class, 'show']);
             Route::get('/{id}/edit', [SupplierController::class, 'edit']);
             Route::put('/{id}', [SupplierController::class, 'update']);
